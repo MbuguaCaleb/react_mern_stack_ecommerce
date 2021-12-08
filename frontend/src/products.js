@@ -9,11 +9,11 @@ export const products = [
     category: 'Electronics',
     price: 89.99,
     countInStock: 3,
-    rating: 4.5,
+    rating: 1.5,
     numReviews: 4,
   },
   {
-    _id: '1',
+    _id: '2',
     name: 'Airpods Wireless Bluetooth Headphones',
     image: 'images/alexa.jpg',
     description:
@@ -22,11 +22,11 @@ export const products = [
     category: 'Electronics',
     price: 89.99,
     countInStock: 3,
-    rating: 4.5,
+    rating: 2.5,
     numReviews: 4,
   },
   {
-    _id: '1',
+    _id: '3',
     name: 'Airpods Wireless Bluetooth Headphones',
     image: 'images/camera.jpg',
     description:
@@ -35,11 +35,11 @@ export const products = [
     category: 'Electronics',
     price: 89.99,
     countInStock: 3,
-    rating: 4.5,
+    rating: 3.5,
     numReviews: 4,
   },
   {
-    _id: '1',
+    _id: '4',
     name: 'Airpods Wireless Bluetooth Headphones',
     image: 'images/mouse.jpg',
     description:
@@ -52,7 +52,7 @@ export const products = [
     numReviews: 4,
   },
   {
-    _id: '1',
+    _id: '5',
     name: 'Airpods Wireless Bluetooth Headphones',
     image: 'images/phone.jpg',
     description:
@@ -65,7 +65,7 @@ export const products = [
     numReviews: 4,
   },
   {
-    _id: '1',
+    _id: '6',
     name: 'Airpods Wireless Bluetooth Headphones',
     image: 'images/playstation.jpg',
     description:
@@ -74,7 +74,7 @@ export const products = [
     category: 'Electronics',
     price: 89.99,
     countInStock: 3,
-    rating: 4.5,
+    rating: 5.5,
     numReviews: 4,
   },
 ]

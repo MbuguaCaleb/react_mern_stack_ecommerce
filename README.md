@@ -9,6 +9,12 @@ Proptypes validate your data and minimize the possibility of errors.
 
 ```
 
+**Match**
+
+```
+A match object contains information about how a <Route path> matched the URL. match objects contain the following properties:
+```
+
 **Important Websites**
 
 ```

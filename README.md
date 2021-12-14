@@ -61,6 +61,13 @@ Mongo DB Atlas---this is the Cloud Version for Mongo DB
 
 Collections are like tables.
 
+```
+
+**Models in NOSQL**
+
+```
+This is how i create the structure of my Collections(Tables)
+in NOSQL Databases.
 
 
 ```

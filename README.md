@@ -38,6 +38,19 @@ a proxy server is a server application that acts as an intermediary between a cl
 
 ```
 
+**Enabling ES6 in Node Js**
+
+```
+All i should do is to add type modules in my Node Js Application.
+
+The difference between ES6 imports in the backend and in the front end is
+that in backend when i am importing files they must end with a .JS.
+
+N/B
+The Backend interprets everything that does not have a .JS file as a module
+
+```
+
 **Important Websites**
 
 ```

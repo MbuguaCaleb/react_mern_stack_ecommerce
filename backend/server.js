@@ -1,9 +1,13 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import connectDB from './config/db.js'
 import products from './data/products.js'
 
 //Initializing my Environenment Variables
 dotenv.config()
+
+//connecting to the MongoDB Database
+connectDB()
 
 const app = express()
 

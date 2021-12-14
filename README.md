@@ -51,6 +51,20 @@ The Backend interprets everything that does not have a .JS file as a module
 
 ```
 
+**MONGO DB NOSQL Database**
+
+```
+In a NOSQL  Database we have  a collection of documents or Objects.
+
+
+Mongo DB Atlas---this is the Cloud Version for Mongo DB
+
+Collections are like tables.
+
+
+
+```
+
 **Important Websites**
 
 ```

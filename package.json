@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "MERN Shopping Cart with  Paypal and Mpesa",
   "main": "server.js",
-  "type":"module",
+  "type": "module",
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
@@ -22,7 +22,8 @@
   "homepage": "https://github.com/MbuguaCaleb/react_mern_stack_ecommerce#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^6.1.1"
   },
   "devDependencies": {
     "concurrently": "^6.4.0",

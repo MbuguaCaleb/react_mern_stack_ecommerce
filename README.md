@@ -69,6 +69,31 @@ Collections are like tables.
 This is how i create the structure of my Collections(Tables)
 in NOSQL Databases.
 
+```
+
+**Mongo DB Notes**
+
+```
+(a)Everytime i am working with a Mongoose Model it always returns a Promise
+
+
+My function in express Must always have asyc await.
+
+
+```
+
+**MiddleWare**
+
+```
+It is basically a function that has access to the request response cycle.
+
+//simple middleware
+app.use((req, res, next) => {
+  console.log(req.originalUrl)
+  next()
+})
+
+
 
 ```
 

@@ -132,6 +132,12 @@ Packages needed in redux installation.
 npm i redux react-redux redux-thunk redux-devtools-extension
 
 
+import { useDispatch, useSelector } from 'react-redux'
+
+The useDispatch hook and the useSelector are the ones we use to dispatch actions and to select
+part of the state.
+
+
 ```
 
 **Important Websites**

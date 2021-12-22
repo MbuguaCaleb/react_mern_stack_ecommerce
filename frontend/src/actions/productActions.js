@@ -11,7 +11,6 @@ import {
 //now wonder there is a function inside a function
 //redux thunk helps in this
 //instead of getting products from the component, we are going to get products from this action
-
 export const listProducts = () => async (dispatch) => {
   try {
     dispatch({

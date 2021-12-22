@@ -93,6 +93,43 @@ app.use((req, res, next) => {
   next()
 })
 
+```
+
+**Redux**
+
+```
+We have got two types of State.
+
+(a)Component Level State.
+
+  Has to do with components....propery drilling
+
+
+(b)Application Level State
+
+ What services in angular also try to do it to take state from component
+ level to application.
+
+Reducers--->functions that accept actions and are responsible for changing/maniuplating
+            the  state.
+
+
+Actions--->Are Objects that reprsent the intention to change a piece of State.
+
+
+ActionCreators->Functions that will dispatch and fireoff those actions.
+
+
+There is a big difference between action creators and actions....
+
+
+i call action creators from my components.
+
+
+Packages needed in redux installation.
+
+
+npm i redux react-redux redux-thunk redux-devtools-extension
 
 
 ```

@@ -153,6 +153,13 @@ Redirecting to the cart with a Query String Qty.
 
 history.push(`/cart/${match.params.id}?qty=${qty}`)
 
+By putting a question mark at the end of my route parameter i make it
+Optional.
+
+<Route path='/product/:id?' component={CartScreen} />
+
+Means that the :id can either be part of the route or not.
+
 ```
 
 **Important Websites**

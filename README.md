@@ -138,6 +138,21 @@ The useDispatch hook and the useSelector are the ones we use to dispatch actions
 part of the state.
 
 
+
+
+
+```
+
+**NEW THINGS LEARNT**
+
+```
+History is used for rediretion.
+Match helps us extract the URL Parameters
+
+Redirecting to the cart with a Query String Qty.
+
+history.push(`/cart/${match.params.id}?qty=${qty}`)
+
 ```
 
 **Important Websites**

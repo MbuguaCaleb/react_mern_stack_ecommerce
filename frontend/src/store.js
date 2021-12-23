@@ -1,12 +1,16 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension' //Helps me track my redux state from chrome extension
-import { productListReducer } from './reducers/productReducers'
+import {
+  productListReducer,
+  productDetailsReducer,
+} from './reducers/productReducers'
 
 //Undestanding combine reducer is very important because this is where i combine all my global states
 //Always note the Key
 const reducer = combineReducers({
   productList: productListReducer,
+  productDetailsReducer: productDetailsReducer,
 })
 
 const initialState = {}

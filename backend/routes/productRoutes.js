@@ -11,7 +11,6 @@ router.get(
   asyncHandler(async (req, res) => {
     //Returning an empty objects gives us all the items
     const products = await Product.find({})
-
     return res.json(products)
   })
 )

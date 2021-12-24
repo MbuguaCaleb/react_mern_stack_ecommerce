@@ -6,14 +6,21 @@ import {
   productDetailsReducer,
 } from './reducers/productReducers'
 
+import { cartReducer } from './reducers/cartReducers'
 //Undestanding combine reducer is very important because this is where i combine all my global states
 //Always note the Key
 const reducer = combineReducers({
   productList: productListReducer,
-  productDetailsReducer: productDetailsReducer,
+  productDetails: productDetailsReducer,
+  cart: cartReducer,
 })
 
-const initialState = {}
+const cartItemsFromLocalStorage = localStorage.getItem('cartItems')
+  ? JSON.parse(localStorage.getItem('cartItems'))
+  : []
+
+//this sets my Initial State
+const initialState = { cart: { cartItems: cartItemsFromLocalStorage } }
 
 //i may have more than one middleware
 const middleware = [thunk]

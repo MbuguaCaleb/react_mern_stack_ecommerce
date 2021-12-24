@@ -9,6 +9,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       const existItem = state.cartItems.find((x) => x.product === item.product)
 
       if (existItem) {
+        //Map is returning an update of my Item
         return {
           ...state,
           cartItems: state.cartItems.map((x) =>

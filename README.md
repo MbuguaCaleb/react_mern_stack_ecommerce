@@ -162,6 +162,17 @@ Means that the :id can either be part of the route or not.
 
 ```
 
+**Javascript things to Learn**
+
+```
+1.Local Storage.
+
+2.Array Reduce Method.
+
+
+
+```
+
 **Important Websites**
 
 ```

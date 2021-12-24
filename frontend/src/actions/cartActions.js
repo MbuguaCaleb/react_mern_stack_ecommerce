@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CART_ADD_ITEM } from '../constants/cartConstants'
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from '../constants/cartConstants'
 
 //getState is a store method
 
@@ -20,5 +20,16 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
   })
 
   //i am getting my current State after dispatch as i am saving it into localStorage
+  localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
+}
+
+export const removeFromCart = (id) => (dispatch, getState) => {
+  dispatch({
+    type: CART_REMOVE_ITEM,
+    payload: id,
+  })
+
+  //after i remove the item from dispatch
+  //I must set my Local Storage to the new Value
   localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
 }

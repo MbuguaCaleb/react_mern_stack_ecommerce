@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, ListGroup, Image, Form, Button, Card } from 'react-bootstrap'
 import Message from '../components/Message'
-import { addToCart } from '../actions/cartActions'
+import { addToCart, removeFromCart } from '../actions/cartActions'
 
 //When i Load this Page i want to have added my Item into the Cart
 function CartScreen({ match, location, history }) {
@@ -25,7 +25,7 @@ function CartScreen({ match, location, history }) {
 
   //custom methods
   const removeFromCartHandler = (id) => {
-    console.log(`remove----${id}`)
+    dispatch(removeFromCart(id))
   }
 
   const checkOutHandler = () => {

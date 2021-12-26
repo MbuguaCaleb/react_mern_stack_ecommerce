@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-
+import bcrypt from 'bcryptjs'
 //Structure of the Collection
 const userSchema = mongoose.Schema(
   {
@@ -25,6 +25,11 @@ const userSchema = mongoose.Schema(
   { timeStamps: true }
 )
 
+//custom method in my Model
+//We can be able to get any of the models fields with this
+userSchema.methods.matchPassword = async (enteredPassword) => {
+  return await bcrypt.compare(enteredPassword, this.password)
+}
 //creating the collection itself
 const User = mongoose.model('User', userSchema)
 

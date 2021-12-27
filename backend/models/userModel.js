@@ -27,7 +27,7 @@ const userSchema = mongoose.Schema(
 
 //custom method in my Model
 //We can be able to get any of the models fields with this
-userSchema.methods.matchPassword = async (enteredPassword) => {
+userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
 //creating the collection itself

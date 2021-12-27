@@ -7,21 +7,39 @@ import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
 import { login } from '../actions/userActions'
 
-const LogInScreen = ({ location }) => {
+const LogInScreen = ({ location, history }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  console.log(location)
+  const dispatch = useDispatch()
+
+  //Getting the Response after dispatch
+  //beauty of this is that my login state is shared across my components
+  const userLogIn = useSelector((state) => state.userLogIn)
+  const { loading, error, userInfo } = userLogIn
+
   const redirect = location.search ? location.search.split('=')[1] : '/'
+
+  useEffect(() => {
+    //redirect if user is logged In
+    //very important piece of code
+    if (userInfo) {
+      history.push(redirect)
+    }
+  }, [history, userInfo, redirect])
+
   const submitHandler = (e) => {
     e.preventDefault()
 
     //Dispatch LogIn
+    dispatch(login(email, password))
   }
 
   return (
     <FormContainer>
       <h1>Sign In</h1>
+      {error && <Message variant='danger'>{error}</Message>}
+      {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='email' className='pb-3'>
           <Form.Label>Email Address</Form.Label>

@@ -30,6 +30,16 @@ const userSchema = mongoose.Schema(
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
+
+//hash passwords before save
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
+    //if password is not modified there is no need of Updating the Salt
+    next()
+  }
+  const salt = await bcrypt.genSalt(10)
+  this.password = await bcrypt.hash(this.password, salt)
+})
 //creating the collection itself
 const User = mongoose.model('User', userSchema)
 

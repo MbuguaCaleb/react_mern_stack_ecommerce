@@ -82,7 +82,7 @@ const RegisterScreen = ({ location, history }) => {
             }}
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId='password' className='pb-3'>
+        <Form.Group controlId='confirm_password' className='pb-3'>
           <Form.Label>Confirm Password </Form.Label>
           <Form.Control
             type='password'

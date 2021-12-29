@@ -20,7 +20,7 @@ function PaymentScreen({ history }) {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(savePaymentMethod({ paymentMethod }))
+    dispatch(savePaymentMethod(paymentMethod))
     history.push('/placeorder')
   }
   return (
@@ -42,16 +42,7 @@ function PaymentScreen({ history }) {
                 setPaymentMethod(e.target.value)
               }}
             ></Form.Check>
-            <Form.Check
-              type='radio'
-              label='Stripe'
-              id='Stripe'
-              name='paymentMethod'
-              value='Stripe'
-              onChange={(e) => {
-                setPaymentMethod(e.target.value)
-              }}
-            ></Form.Check>
+
             <Form.Check
               type='radio'
               label='Mpesa'

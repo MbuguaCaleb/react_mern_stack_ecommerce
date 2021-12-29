@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
-import { saveShippingAddress } from '../actions/cartActions'
+import { createOrder } from '../actions/orderActions'
 import CheckOutSteps from '../components/CheckOutSteps'
 
-const PlaceOrderScreen = () => {
+const PlaceOrderScreen = ({ history }) => {
   //remember i am making an Order.
   //The first thing is to get Items in My Cart
   const cart = useSelector((state) => state.cart)
+  const dispatch = useDispatch()
 
   //Utility function to add decimals
   const addDecimals = (num) => {
@@ -31,8 +32,30 @@ const PlaceOrderScreen = () => {
     Number(cart.taxPrice)
   ).toFixed(2)
 
+  //grabbing my orderCreate State
+  const orderCreate = useSelector((state) => state.orderCreate)
+
+  const { order, success, error } = orderCreate
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order._id}`)
+    }
+  }, [history, success])
+
   const placeOrderHandler = (e) => {
     e.preventDefault()
+    dispatch(
+      createOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod,
+        itemsPrice: cart.itemsPrice,
+        shippingPrice: cart.shippingPrice,
+        taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
+      })
+    )
   }
 
   return (
@@ -45,9 +68,8 @@ const PlaceOrderScreen = () => {
               <h2>Shipping</h2>
               <p>
                 <strong>Address:</strong>
-                {cart.shippingAddress.address},{cart.shippingAddress.city}{' '}
-                {cart.shippingAddress.postalCode},{' '}
-                {cart.shippingAddress.country}
+                {cart.shippingAddress.address},{cart.shippingAddress.city}
+                {cart.shippingAddress.postalCode},{cart.shippingAddress.country}
               </p>
             </ListGroup.Item>
             <ListGroup.Item>
@@ -121,6 +143,9 @@ const PlaceOrderScreen = () => {
                   <Col>Total</Col>
                   <Col>${cart.totalPrice}</Col>
                 </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {error && <Message variant='danger'>{error}</Message>}
               </ListGroup.Item>
               <ListGroup.Item>
                 <Button

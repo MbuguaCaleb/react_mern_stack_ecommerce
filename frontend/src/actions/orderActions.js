@@ -3,19 +3,20 @@ import {
   ORDER_CREATE_SUCCESS,
   ORDER_CREATE_FAIL,
 } from '../constants/orderConstants'
+import axios from 'axios'
 
-export const updateUserProfile = (user) => async (dispatch, getState) => {
+//Order is an Object being passed inside
+export const createOrder = (order) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: USER_UPDATE_PROFILE_REQUEST,
+      type: ORDER_CREATE_REQUEST,
     })
 
     //get Token
     const {
       userLogIn: { userInfo },
     } = getState()
-    //Setting up my headers.
-    //Where i will also set my Token
+
     const config = {
       headers: {
         'Content-Type': 'application/json',
@@ -23,15 +24,15 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put(`/api/users/profile`, user, config)
+    const { data } = await axios.post(`/api/orders`, order, config)
 
     dispatch({
-      type: USER_UPDATE_PROFILE_SUCCESS,
+      type: ORDER_CREATE_SUCCESS,
       payload: data,
     })
   } catch (error) {
     dispatch({
-      type: USER_UPDATE_PROFILE_FAIL,
+      type: ORDER_CREATE_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

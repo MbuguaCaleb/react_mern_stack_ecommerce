@@ -5,7 +5,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import connectDB from './config/db.js'
 import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
-
+import orderRoutes from './routes/orderRoutes.js'
 //Initializing my Environenment Variables
 dotenv.config()
 
@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 //Mounting the Router
 app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
-
+app.use('/api/orders', orderRoutes)
 //Express Error Handler Middlewares
 app.use(notFound)
 

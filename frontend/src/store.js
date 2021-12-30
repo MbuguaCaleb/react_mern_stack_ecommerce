@@ -12,7 +12,10 @@ import {
   userUpdateProfileReducer,
 } from './reducers/userReducers'
 import { cartReducer } from './reducers/cartReducers'
-import { orderCreateReducer } from './reducers/orderReducers'
+import {
+  orderCreateReducer,
+  orderDetailsReducer,
+} from './reducers/orderReducers'
 
 //Undestanding combine reducer is very important because this is where i combine all my global states
 //Always note the Key
@@ -25,6 +28,7 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
 })
 
 const cartItemsFromLocalStorage = localStorage.getItem('cartItems')

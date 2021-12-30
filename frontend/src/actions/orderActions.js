@@ -83,6 +83,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
   }
 }
 
+//Payment Result comes from PAYPAL
 export const payOrder =
   (orderId, paymentResult) => async (dispatch, getState) => {
     try {

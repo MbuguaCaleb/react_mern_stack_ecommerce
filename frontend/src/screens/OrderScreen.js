@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import { getOrderDetails, payOrder } from '../actions/orderActions'
 import Loader from '../components/Loader'
+import { ORDER_PAY_RESET } from '../constants/orderConstants'
 
 const OrderScreen = ({ match }) => {
   //match  comes from react router and is used to get Parameters
@@ -42,12 +43,6 @@ const OrderScreen = ({ match }) => {
     order.shippingPrice = addDecimals(order.itemsPrice > 100 ? 0 : 100)
   }
 
-  //payment result comes from PayPal
-  const successPaymentMethod = (paymentResult) => {
-    console.log(paymentResult)
-    dispatch(payOrder(orderId, paymentResult))
-  }
-
   useEffect(() => {
     const addPayPalScript = async () => {
       const { data: clientId } = await axios.get('/api/config/paypal')
@@ -65,9 +60,21 @@ const OrderScreen = ({ match }) => {
       document.body.appendChild(script)
     }
 
+    if (order) {
+      console.log(order._id)
+      console.log(orderId)
+
+      if (order._id !== orderId) {
+        console.log(order._id)
+        console.log(orderId)
+        dispatch(getOrderDetails(orderId))
+      }
+    }
+
     //will load both when there is no Order
     //Or when there is a successful payment
     if (!order || successPay) {
+      dispatch({ type: ORDER_PAY_RESET })
       dispatch(getOrderDetails(orderId))
     } else if (!order.isPaid) {
       if (!window.paypal) {
@@ -77,6 +84,12 @@ const OrderScreen = ({ match }) => {
       }
     }
   }, [dispatch, orderId, successPay, order])
+
+  //payment result comes from PayPal
+  const successPaymentMethod = (paymentResult) => {
+    console.log(paymentResult)
+    dispatch(payOrder(orderId, paymentResult))
+  }
 
   return loading ? (
     <Loader />

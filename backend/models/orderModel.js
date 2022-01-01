@@ -76,7 +76,7 @@ const orderSchema = mongoose.Schema(
       type: Date,
     },
   },
-  { timeStamps: true }
+  { timestamps: true }
 )
 
 //creating the collection itself

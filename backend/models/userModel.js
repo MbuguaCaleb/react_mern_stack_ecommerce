@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema(
       default: false,
     },
   },
-  { timeStamps: true }
+  { timestamps: true }
 )
 
 //custom method in my Model

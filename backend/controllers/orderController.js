@@ -77,11 +77,19 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
     const updatedOrder = await order.save()
 
     res.json(updatedOrder)
-    
   } else {
     res.status(404)
     throw new Error('Order Not Found')
   }
 })
 
-export { addOrderItems, getOrderById, updateOrderToPaid }
+//@desc Get logged in user orders
+//@route GET /api/orders/myorders
+//@access private
+const getMyOrders = asyncHandler(async (req, res) => {
+  //find is used when i am fetching more than one record
+  const orders = await Order.find({ user: req.user._id })
+  res.json(orders)
+})
+
+export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders }

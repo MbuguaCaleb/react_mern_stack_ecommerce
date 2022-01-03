@@ -49,6 +49,8 @@ const ProfileScreen = ({ location, history }) => {
     }
   }, [dispatch, history, userInfo, user])
 
+  //this is a form event
+  //Therefore i must prevent the default behaviour
   const submitHandler = (e) => {
     e.preventDefault()
 

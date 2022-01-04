@@ -280,7 +280,6 @@ export const updateUser = (user) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     }
-
     const { data } = await axios.put(`/api/users/${user._id}`, user, config)
 
     dispatch({ type: USER_UPDATE_SUCCESS })

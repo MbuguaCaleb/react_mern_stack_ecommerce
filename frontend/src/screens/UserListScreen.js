@@ -28,7 +28,7 @@ function UserListScreen({ history }) {
       //if i am not logged in
       history.push('/login')
     }
-  }, [dispatch, history, successDelete])
+  }, [dispatch, history, successDelete, userInfo])
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure')) {
@@ -59,12 +59,11 @@ function UserListScreen({ history }) {
             {users.map((user) => {
               return (
                 <tr key={user._id}>
+                  <td>{user._id}</td>
                   <td>{user.name}</td>
                   <td>
-                    <a href={`mailto:${user.name}`}></a>
-                    {user.email}
+                    <a href={`mailto:${user.name}`}> {user.email}</a>
                   </td>
-                  <td>{user.email}</td>
                   <td>
                     {user.isAdmin ? (
                       <i
@@ -77,7 +76,7 @@ function UserListScreen({ history }) {
                   </td>
 
                   <td>
-                    <LinkContainer to={`/user/${user._id}/edit`}>
+                    <LinkContainer to={`/admin/user/${user._id}/edit`}>
                       <Button variant='light' className='btn-sm'>
                         <i className='fas fa-edit'></i>
                       </Button>

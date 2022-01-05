@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension' //Helps me track 
 import {
   productListReducer,
   productDetailsReducer,
+  productDeleteReducer,
 } from './reducers/productReducers'
 import {
   userLogInReducer,
@@ -27,6 +28,7 @@ import {
 const reducer = combineReducers({
   productList: productListReducer,
   productDetails: productDetailsReducer,
+  productDelete: productDeleteReducer,
   cart: cartReducer,
   userLogIn: userLogInReducer,
   userRegister: userRegisterReducer,

@@ -62,10 +62,12 @@ const ProductEditScreen = ({ match, history }) => {
   }, [dispatch, history, productId, product, successUpdate])
 
   const uploadFileHandler = async (e) => {
+    e.preventDefault()
     //getting the Uploaded file
     //We get an array but since we are Only getting the first Image , we use [0]
     const file = e.target.files[0]
-    const formData = new FormData('image', file)
+    const formData = new FormData()
+    formData.append('image', file)
     setUpLoading(true)
 
     try {
@@ -150,15 +152,16 @@ const ProductEditScreen = ({ match, history }) => {
                   setImage(e.target.value)
                 }}
               ></Form.Control>
-              <Form.File
-                id='image-file'
-                label='Choose File'
-                custom
+            </Form.Group>
+            <Form.Group controlId='image-file' className='pb-3'>
+              <Form.Control
+                type='file'
+                label='choose file'
                 onChange={uploadFileHandler}
-              ></Form.File>
-
+              ></Form.Control>
               {upLoading && <Loader />}
             </Form.Group>
+
             <Form.Group controlId='brand' className='pb-3'>
               <Form.Label>Brand</Form.Label>
               <Form.Control

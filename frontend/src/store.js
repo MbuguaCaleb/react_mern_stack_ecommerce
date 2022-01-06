@@ -5,6 +5,7 @@ import {
   productListReducer,
   productDetailsReducer,
   productDeleteReducer,
+  productCreateReducer,
 } from './reducers/productReducers'
 import {
   userLogInReducer,
@@ -26,6 +27,7 @@ import {
 //Undestanding combine reducer is very important because this is where i combine all my global states
 //Always note the Key
 const reducer = combineReducers({
+  productCreate: productCreateReducer,
   productList: productListReducer,
   productDetails: productDetailsReducer,
   productDelete: productDeleteReducer,

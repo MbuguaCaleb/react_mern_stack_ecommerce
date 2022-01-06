@@ -169,10 +169,15 @@ Means that the :id can either be part of the route or not.
 
 2.Array Reduce Method.(Javascript Higher Order Array Methods)
 
-
-
 ```
 
+**File/Image Upload**
+```
+I am using a package called multer.
+
+Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files. 
+
+```
 **Important Websites**
 
 ```

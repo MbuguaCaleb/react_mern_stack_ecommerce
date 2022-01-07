@@ -23,7 +23,7 @@ const ReviewSchema = mongoose.Schema(
       ref: 'User',
     },
   },
-  { timeStamps: true }
+  { timestamps: true }
 )
 
 //Structure of the Collection

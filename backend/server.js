@@ -8,6 +8,7 @@ import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
+import morgan from 'morgan'
 
 //Initializing my Environenment Variables
 dotenv.config()
@@ -17,6 +18,11 @@ connectDB()
 
 const app = express()
 
+//Only run Morgan on Development
+//It a package that gives us better Logging from within our Application
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
 //Middleware that allows us to accept JSON Data in the body
 app.use(express.json())
 

@@ -1,5 +1,8 @@
 import mongoose from 'mongoose'
 
+//I want to as well associate a review to a User
+//So that a user does not make a review Twice
+//It also helps us to check and see whether a User had already added a review
 const ReviewSchema = mongoose.Schema(
   {
     name: {
@@ -13,6 +16,11 @@ const ReviewSchema = mongoose.Schema(
     comment: {
       type: String,
       required: true,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
     },
   },
   { timeStamps: true }

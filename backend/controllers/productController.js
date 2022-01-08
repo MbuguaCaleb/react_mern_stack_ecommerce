@@ -6,6 +6,11 @@ import Product from '../models/productModel.js'
 //@access  Public
 const getProducts = asyncHandler(async (req, res) => {
   //If there is a keyword in the query Parameter i am searching with the Regex
+  const pageSize = 10
+
+  //current Page
+  const page = Number(req.query.pageNumber) || 1
+
   const keyWord = req.query.keyWord
     ? {
         name: {
@@ -15,10 +20,12 @@ const getProducts = asyncHandler(async (req, res) => {
       }
     : {}
 
-  console.log(keyWord)
-  //Returning an empty objects gives us all the items
+  const count = await Product.countDocuments({ ...keyWord })
   const products = await Product.find({ ...keyWord })
-  return res.json(products)
+    .limit(pageSize)
+    .skip(pageSize * (page - 1))
+
+  res.json({ products, page, pages: Math.ceil(count / pageSize) })
 })
 
 //@desc a single product

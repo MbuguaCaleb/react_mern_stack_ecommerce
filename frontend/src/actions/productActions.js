@@ -27,14 +27,17 @@ import {
 //redux thunk helps in this
 //instead of getting products from the component, we are going to get products from this action
 export const listProducts =
-  (keyWord = '') =>
+  (keyWord = '', pageNumber = '') =>
   async (dispatch) => {
     try {
       dispatch({
         type: PRODUCT_LIST_REQUEST,
       })
 
-      const { data } = await axios.get(`/api/products?keyWord=${keyWord}`)
+      //This data will include products, pageNumber and the Page
+      const { data } = await axios.get(
+        `/api/products?keyWord=${keyWord}&pageNumber=${pageNumber}`
+      )
 
       dispatch({
         type: PRODUCT_LIST_SUCCESS,

@@ -6,7 +6,9 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { listProducts } from '../actions/productActions'
 
-const HomeScreen = () => {
+const HomeScreen = ({ match }) => {
+  //getting the search property
+  const keyWord = match.params.keyword
   const dispatch = useDispatch()
 
   //getting the list of products from the redux store
@@ -15,8 +17,8 @@ const HomeScreen = () => {
 
   useEffect(() => {
     //dispatching fetch products action
-    dispatch(listProducts())
-  }, [dispatch])
+    dispatch(listProducts(keyWord))
+  }, [dispatch, keyWord])
 
   return (
     <>
